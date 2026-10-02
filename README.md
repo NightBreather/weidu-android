@@ -1,5 +1,7 @@
 # WeiDU for Android (Termux) — native arm64 build
 
+> Türkçe: [README.tr.md](README.tr.md)
+
 Unofficial **native Android (aarch64 / arm64-v8a)** builds of
 [**WeiDU v251.00**](https://github.com/WeiDUorg/weidu/releases/tag/v251.00) —
 the tool used to create, distribute and install mods for Infinity Engine games
