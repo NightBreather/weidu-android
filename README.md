@@ -2,6 +2,8 @@
 
 > Türkçe: [README.tr.md](README.tr.md)
 
+![WeiDU v251 for Android arm64](docs/banner.png)
+
 Unofficial **native Android (aarch64 / arm64-v8a)** builds of
 [**WeiDU v251.00**](https://github.com/WeiDUorg/weidu/releases/tag/v251.00) —
 the tool used to create, distribute and install mods for Infinity Engine games

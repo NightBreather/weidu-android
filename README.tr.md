@@ -2,6 +2,8 @@
 
 > English: [README.md](README.md)
 
+![Android arm64 için WeiDU v251](docs/banner.png)
+
 Infinity Engine oyunları için mod kurma/geliştirme aracı
 [**WeiDU v251.00**](https://github.com/WeiDUorg/weidu/releases/tag/v251.00)'ün
 resmî olmayan **native Android (aarch64 / arm64-v8a)** derlemesi

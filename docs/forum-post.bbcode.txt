@@ -1,0 +1,75 @@
+[center][img]https://raw.githubusercontent.com/NightBreather/weidu-android/main/docs/banner.png[/img][/center]
+
+[b]WeiDU v251 for Android (arm64 / Termux) - prebuilt native binaries[/b]
+
+Hi everyone,
+
+I could not find a recent WeiDU build that runs on modern Android, so I built the
+latest stable release ([b]v251.00[/b]) natively on-device - no PC, no proot, no Wine.
+Sharing it in case it is useful to someone.
+
+[b]What it is[/b]
+A native [b]arm64 Android ELF[/b] build of WeiDU (the same tool used on desktop to
+install Infinity Engine mods), running inside [b]Termux[/b]. It installs mods directly
+against the game data folder.
+
+[b]Download[/b]
+[url=https://github.com/NightBreather/weidu-android]https://github.com/NightBreather/weidu-android[/url]
+
+Contents: [code]weidu[/code], [code]weinstall[/code], [code]tolower[/code] (all 25100), plus a
+reproducible build script.
+
+[hr]
+
+[b]Install[/b]
+Download the repo, then in Termux:
+
+[code]cp bin/weidu bin/weinstall bin/tolower "$PREFIX/bin/"
+chmod 755 "$PREFIX/bin/weidu" "$PREFIX/bin/weinstall" "$PREFIX/bin/tolower"
+weidu --version[/code]
+
+[center][img]https://raw.githubusercontent.com/NightBreather/weidu-android/main/docs/terminal.png[/img][/center]
+
+[b]Usage[/b]
+Run it from the game directory (the folder that contains chitin.key):
+
+[code]cd /path/to/game
+weidu /path/to/setup-my-mod.tp2 --language 0 --force-install-list 0[/code]
+
+Or with the shortcut wrapper:
+
+[code]weinstall my-mod --language 0 --force-install-list 0[/code]
+
+[hr]
+
+[b]How it is built (on the phone)[/b]
+
+[center][img]https://raw.githubusercontent.com/NightBreather/weidu-android/main/docs/toolchain.png[/img][/center]
+
+WeiDU still requires OCaml with "unsafe strings", and OCaml 5.x removed
+[code]-unsafe-string[/code]. So the toolchain is: OCaml 4.14.2 (from source) +
+Elkhound -> WeiDU v251.00 -> arm64 Android ELF. The full recipe is in
+[code]build/build-android.sh[/code].
+
+[b]v249 -> v251 highlights relevant to mobile / Linux[/b]
+
+[center][img]https://raw.githubusercontent.com/NightBreather/weidu-android/main/docs/features.png[/img][/center]
+
+[list]
+[*]Linux builds no longer need [code]tolower[/code] or a case-insensitive filesystem
+[*][code]ADD_KIT[/code] / [code]COPY_KIT[/code] understand filler lines in KITLIST.IDS
+[*][code]HANDLE_CHARSETS[/code] infers Turkish and more languages
+[*][code]--force-install-list[/code] warns on unknown component numbers
+[*]New: [code]GET_RESOURCE_ARRAY[/code], [code]OUTER_SPRINTF[/code], [code]--unbiff[/code], ...
+[/list]
+
+[hr]
+
+[b]Notes / caveats[/b]
+[list]
+[*]arm64 only (no 32-bit, no x86)
+[*][code]tolower[/code] is included for completeness but is [b]not[/b] for EE games - it even refuses on them
+[*]Unofficial build, GPL-2.0; source is the upstream repo at tag v251.00
+[/list]
+
+Feedback and test reports welcome.
